@@ -1,0 +1,9 @@
+
+<table>
+    <tr *ngFor = "let row of table">
+      <td>
+        <button mat-button color= "primary" (click) = "goToProfile(row.userName)">{{ getUserDispname(row.userName) }}</button>
+      </td>
+      <td *ngFor = "let req of row.list" [style.background-color] = "req.knows ? '#ccffcc' : '#ffcccc'"> {{ req.nameOf }} </td>
+    </tr>
+</table>

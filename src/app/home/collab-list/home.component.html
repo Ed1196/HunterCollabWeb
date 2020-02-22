@@ -1,0 +1,52 @@
+   <!--
+     selected.value: Is a value from .ts file.
+     selectedIndex: DOM value
+   -->
+   <mat-tab-group [selectedIndex] = "selected.value" 
+                  (selectedIndexChange) ="currentTab($event)" mat-align-tabs="center">
+
+      <mat-tab label="Recommended">
+        <ng-template matTabContent>
+          <ng-container *ngFor = "let collab of collabData | async">
+            <div class ="collab">
+                <!-- Property binding from component to component using @Input() and @Output -->
+                <collab-card [collabData] = "collab"></collab-card>
+            </div>      
+          </ng-container>
+        </ng-template>
+      </mat-tab>
+
+      <mat-tab label="All Collaborations">
+        <ng-template matTabContent>
+          <ng-container *ngFor = "let collab of collabData | async">
+            <div class ="collab">
+                <!-- Property binding from component to component using @Input() and @Output -->
+                <collab-card [collabData] = "collab"></collab-card>
+            </div>      
+          </ng-container>
+        </ng-template>
+      </mat-tab>
+
+      <mat-tab label="My Collabs">
+        <ng-template matTabContent>
+            <ng-container *ngFor = "let collab of collabData | async">
+              <div class ="collab">
+                <!-- Property binding from component to component using @Input() and @Output -->
+                <collab-card [collabData] = "collab"></collab-card>
+              </div>      
+            </ng-container>
+        </ng-template>
+      </mat-tab>
+
+
+
+   </mat-tab-group>
+
+   <div class = "add-collab-button">
+     <a mat-fab color = "primary" (click) = "createCollab()" style="margin-right: 14px">
+      <mat-icon>add</mat-icon>
+     </a>
+   </div>
+     
+          
+            

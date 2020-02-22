@@ -1,0 +1,29 @@
+<h2 mat-dialog-title> Update User Details </h2>
+    <div class = "container">
+        <!-- Template Driven Form: Angular uses these fields and apply a form-level directive to the form, craeting
+                                    a FormGroup and linking it to the form.
+                [(ngModel)] two-way(bi-directional) binding to allow for sync of form fields and view model
+                controller: data, which was passed down from user-page component, of type UserModel will control the fields
+        -->
+        <form #form = "ngForm" (ngSubmit) = "update(form.value)">
+        
+            <mat-form-field>
+                <input [(ngModel)] = "data.userData['name']" name = "username" id = "username" type = "text" class = "form-control"
+                    #username = "ngModel" matInput placeholder = "User Name..." required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input [(ngModel)] = "data.userData['github']" name = "github" id = "github" type = "text" class = "form-control"
+                    #github = "ngModel" matInput placeholder = "Github..." required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input [(ngModel)] = "data.userData['linkedin']" name = "linkedin" id = "linkedin" type = "text" class = "form-control"
+                    #linkedin = "ngModel" matInput placeholder = "LinkedIn..." required>
+            </mat-form-field>
+            <br>
+            <button mat-raised-button>Update</button>
+            <br>
+        </form>
+      </div>
+      

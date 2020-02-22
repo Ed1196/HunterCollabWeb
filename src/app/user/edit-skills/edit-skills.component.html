@@ -1,0 +1,33 @@
+<h2 mat-dialog-title> Update User Details </h2>
+<mat-form-field class="example-chip-list">
+    <mat-chip-list #chipListSkills>
+            <!--Displays Users skills-->
+            <mat-chip
+            *ngFor="let skill of skills"
+            [selectable]="selectable"
+            [removable]="removable"
+            (removed)="removeSkill(skill)">
+            {{ skill }}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <!--Allow user to input new skills-->
+            <input
+            placeholder="New Skill..."
+            #skillInput
+            [formControl]="skillCtrl"
+            [matAutocomplete]="auto"
+            [matChipInputFor]="chipListSkills"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur"
+            (matChipInputTokenEnd)="addSkill($event)">
+            <!--Autocomplete panel that will display the autocomplete options inside it-->
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedSkill($event)">
+                    <mat-option *ngFor="let skill of filteredSkills" [value]="skill">
+                    {{ skill }}
+                    </mat-option>
+            </mat-autocomplete>
+    </mat-chip-list>             
+</mat-form-field>
+<br>
+  <button mat-raised-button (click) = "update()">Update</button>
+<br>

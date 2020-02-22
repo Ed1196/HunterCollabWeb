@@ -1,0 +1,22 @@
+
+ <div class = "list-viewer-wrapper">
+    <div class="list-header-title">
+    </div>
+
+    <mat-list style="padding:0" *ngIf = "convos">
+        <ng-container *ngIf = "convos.length == 0">
+            <mat-divider></mat-divider>
+                <mat-list-item>
+                    <span class = "mat-body center">Hey, looks like you have no conversations ... you can message users through their profile page.</span>
+                </mat-list-item>
+        </ng-container>
+        <ng-container *ngFor = "let convo of convos">
+            <mat-divider></mat-divider>
+            <mat-list-item (click)="gotoConvo(convo)">
+                <span class = "mat-body center">{{ convo.otherUser != null ? getUserDispname(convo.otherUser) : convo.title }}</span>
+            
+            </mat-list-item>
+            
+        </ng-container>
+      </mat-list>
+</div>

@@ -1,0 +1,94 @@
+<div class = "container">
+        <form #form = "ngForm" (ngSubmit) = "update(form.value)">
+                <br>
+                <mat-form-field>
+                <input [(ngModel)] = "collabData['title']" name = "title" id = "title" type = "text" class = "form-control"
+                        #title = "ngModel" matInput placeholder = "Collab Title..." required>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                <textarea [(ngModel)] = "collabData['description']" name = "description" id = "description" type = "text" class = "form-control"
+                        #description = "ngModel" matInput placeholder = "Collab Description..." required></textarea>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                <input [(ngModel)] = "collabData['location']" name = "location" id = "location" type = "text" class = "form-control"
+                        #location = "ngModel" matInput placeholder = "Location..." required>
+                </mat-form-field>
+                <br>
+                <mat-form-field>
+                        <input [(ngModel)] = "collabData['size']" name = "size" id = "size" type = "number" class = "form-control"
+                                #size = "ngModel" matInput placeholder = "Collab Size..." required>
+                </mat-form-field>
+                <mat-form-field>
+                        <input [ngModel] (ngModelChange)="collabData['date'] = $event"
+                                name = "date" id="date" class = "form-control" 
+                                #date = "ngModel" matInput placeholder = "Choose a date" [owlDateTimeTrigger]="dt" [owlDateTime]="dt" required>
+                        <owl-date-time #dt></owl-date-time>
+                </mat-form-field>
+                <mat-form-field>
+                        <input [ngModel] name = "duration" id = "duration"  class = "form-control"
+                                #duration = "ngModel" matInput placeholder = "Duration..." [owlDateTimeTrigger]="dt2" [owlDateTime]="dt2" required>
+                        <owl-date-time #dt2></owl-date-time>
+                </mat-form-field>
+                <mat-form-field class="example-chip-list">
+                        <mat-chip-list #chipListSkills>
+                                <mat-chip
+                                *ngFor="let skill of skills"
+                                [selectable]="selectable"
+                                [removable]="removable"
+                                (removed)="removeSkill(skill)">
+                                {{ skill }}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                </mat-chip>
+                                <input
+                                placeholder="New Skill..."
+                                #skillInput
+                                [formControl]="skillCtrl"
+                                [matAutocomplete]="auto"
+                                [matChipInputFor]="chipListSkills"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                [matChipInputAddOnBlur]="addOnBlur"
+                                (matChipInputTokenEnd)="addSkill($event)">
+                                <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectedSkill($event)">
+                                        <mat-option *ngFor="let skill of filteredSkills" [value]="skill">
+                                        {{ skill }}
+                                        </mat-option>
+                                </mat-autocomplete>
+                        </mat-chip-list>             
+                </mat-form-field>
+                <br>
+                <mat-form-field class="example-chip-list">
+                        <mat-chip-list #chipListClasses>
+                                <mat-chip
+                                *ngFor = "let class of classes"
+                                [selectable] = "selectable"
+                                [removable] = "removable"
+                                (removed) = "removeClass(class)">
+                                {{ class }}
+                                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                </mat-chip>
+                                <input 
+                                placeholder="New Class..."
+                                #classInput
+                                [formControl]="classCtrl"
+                                [matAutocomplete]="auto2"
+                                [matChipInputFor]="chipListClasses"
+                                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                [matChipInputAddOnBlur]="addOnBlur"
+                                (matChipInputTokenEnd)="addClass($event)">
+                        <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="selectedClass($event)">
+                                <mat-option *ngFor="let class of filteredClasses" [value]="class">
+                                {{ class }}
+                                </mat-option>
+                        </mat-autocomplete>
+                </mat-chip-list>
+
+                </mat-form-field>
+                <br>
+                <button mat-raised-button>Update</button>
+                <br>
+        </form>
+       
+        
+</div>

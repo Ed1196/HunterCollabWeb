@@ -1,0 +1,24 @@
+p {
+    padding: 16px;
+    text-align: center;
+  
+  }
+
+  .collab {
+    margin-top:25px;
+    margin-bottom: 30px;
+  }
+
+  .add-collab-button {
+    z-index: 5; 
+    position: fixed; 
+    display: flex;
+    align-self: flex-end; 
+    bottom: 7%; 
+    margin-bottom: 5px;
+    margin-left: 80%; 
+  }
+
+  
+
+  

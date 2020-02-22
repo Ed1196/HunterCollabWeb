@@ -1,0 +1,21 @@
+.mat-form-field {
+    width: 90%;
+    margin-left: 15px;
+}
+
+.example-chip-list .mat-autocomplete{
+    width: 90%;
+}
+
+.container {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+example-chip-list {
+    width: 100%;
+  }
+

@@ -1,0 +1,105 @@
+<!--
+  fxLayout.lt-sm="column"  : Will only be applied when the viewport is less thatn small.
+  fxLayout = "row"         : If ;using big screens, display data in rows
+  fxLayout.xs ="column" ;  : using small screens, display data in columns
+  fxLayoutWrap             : Will wrap this div for us so that flex will be applied
+  fxLayoutGap = 20%;       : Will give us a gap bewteen each fxFlex
+-->
+  <div class = "container" fxLayout = "row" fxLayout.xs = "column" fxLayoutWrap fxLayoutAlign="center">
+
+    <div fxFlex = "40%" fxFlex.xs = "80%">
+        <mat-card class="usercard1">
+          
+                <mat-card-header class="list-header-title">
+
+                 
+                      <mat-card-title>{{ userData?.name }}</mat-card-title>
+                      <mat-card-subtitle>{{ userData?.username }}</mat-card-subtitle>
+                      <button mat-flat-button color="primary" (click) = "openDialog1()" *ngIf="canEdit">Edit</button>
+                      <button mat-flat-button color="primary" (click) = "messageUser()" *ngIf="canMessage">Message</button>
+                </mat-card-header>  
+
+              
+                <div class="containerPic">
+                  <div class="image-background">
+                      <div class="image-container">
+                          <img mat-card-image [src] = "imageLink"
+                          onerror="this.onerror=null; this.src = 'assets/userPhoto.png';"
+                           class="image">
+                      </div> 
+
+                      <div class="middle"  *ngIf="canEdit">
+                        <button mat-raised-button class="text" (click) = "openDialog4()">Change Picture</button>
+                      </div>
+                    </div>  
+                  </div>
+
+                <!--img mat-card-image -->
+                <mat-card-content>
+                
+                <mat-grid-list cols="2" rowHeight="4:1" class="user-links">
+                    <mat-grid-tile>
+                          <button mat-raised-button color="warm" (click) = "onNavigateGithub()" >{{ userData?.github }}</button>
+                    </mat-grid-tile>
+                    
+                    <mat-grid-tile>
+                        <button mat-raised-button color="primary" (click) = "onNavigateLinkedIn()">{{ userData?.linkedin }}</button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+
+              </mat-card-content>
+        </mat-card>
+    </div>
+
+    <div fxFlex = "40%" fxFlex.xs = "80%">
+      <div class="usercard2">
+        <mat-grid-list cols="1" rowHeight="2:1">
+          <!-- Will hold class list -->
+            <mat-grid-tile>
+            <div class ="grid-container">  
+              <div class = "grid-search">
+                  <div class="wrapper">
+                      <button (click) = "openDialog2()" mat-flat-button color="primary" *ngIf="canEdit"> Update </button>
+                  </div>
+              </div>
+              
+              <div class = "grid-item">
+                  <cdk-virtual-scroll-viewport itemSize="classes.size" class="viewport">
+                      <mat-chip-list>
+                        <mat-chip *ngFor = "let class of userData?.classes">
+                          {{ class }}
+                        </mat-chip>
+                      </mat-chip-list>
+                    </cdk-virtual-scroll-viewport>
+                </div>
+            </div>    
+            </mat-grid-tile>
+            <br>
+            <br>
+            <br>
+          <!-- Will hold the skill list -->
+          <mat-grid-tile>
+              <div class ="grid-container">  
+                  <div class = "grid-search">
+                      <div class="wrapper">
+                          <button (click) = "openDialog3()" mat-flat-button color="primary" *ngIf="canEdit"> Update </button>
+                      </div>
+                  </div>
+                  <div class = "grid-item">
+                      <cdk-virtual-scroll-viewport itemSize="skills.size" class="viewport">
+                          <mat-chip-list>
+                            <mat-chip *ngFor = "let skill of userData?.skills">
+                              {{ skill }}
+                            </mat-chip>  
+                          </mat-chip-list>
+                        </cdk-virtual-scroll-viewport>
+                    </div>
+                </div>
+          </mat-grid-tile>
+        </mat-grid-list>
+      </div>
+    </div>
+  </div>
+  <br>  
+  <br>
+  <br>

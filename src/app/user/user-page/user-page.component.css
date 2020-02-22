@@ -1,0 +1,192 @@
+.usercard1 {
+  margin-top: 30px;
+  padding: 0px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.mat-card-avatar {
+  background-image: url('/assets/userPhoto.png');
+  background-size: cover;
+
+}
+.mat-card-actions {
+  display: flex;
+}
+
+.list-header-title {
+color: rgba(0, 0, 0, .54);
+background: rgba(0, 0, 0, 0.062);
+font-weight: bold;
+padding: 0px;
+
+}
+
+.mat-card-header {
+  padding-left: 10px;
+  padding-top: 10px; 
+}
+
+.mat-raised-button {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.usercard2 {
+margin-top: 30px;
+color: rgba(0, 0, 0, .54);
+background: rgba(0, 0, 0, 0.062);
+height: 86.5%;
+padding-bottom: 25px;
+border-radius: 5px;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.viewport {
+width: 100%;
+height: 100%;
+margin-left: 40px;
+box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.cdk-virtual-scroll-viewport {
+height: 70%;
+margin: 0px;
+background-color: white;
+
+}
+
+.example-form .mat-form-field {
+margin: 0px;
+}
+
+
+
+.mat-list {
+width: 100%;
+height: 100%;
+}
+
+.grid-container {
+grid: auto-flow / 1fr;
+width: 100%;
+height: 100%;
+}
+
+.grid-search {
+grid-area: grid-search;
+margin-left: 25px;
+
+}
+.grid-item {
+grid-area: grid-item;
+height: 100%;
+margin-left: 25px;
+margin-right: 25px;
+margin-bottom: 0px;
+}
+
+.mat-chip-list {
+margin: 1px;
+}
+
+.example-form {
+min-width: 150px;
+max-width: 500px;
+width: 100%;
+}
+
+.example-full-width {
+width: 80%;
+margin-top: 15px;
+margin-bottom: 15px;
+background: rgba(255, 255, 255, 0.671);
+border-radius: 15px;
+}
+
+.wrapper {
+display:inline-block;
+margin-top: 10px;
+margin-bottom: 15px;
+height: 30px;
+}
+
+input {
+    background-color: white;
+    border: 3;
+    width: 200px;
+    height: 30px;
+}
+
+button {
+    
+    border: solid black 1px;
+    width: 100px;
+    height: 38px;
+}
+
+.mat-flat-button  {
+  width: auto;
+  margin-left: auto;
+  margin-right: 10px; 
+}
+
+
+
+.uploadButton {
+  height: 38px;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.containerPic:hover .image {
+  opacity: 0.3;
+}
+
+.containerPic:hover .middle {
+  opacity: 1;
+}
+
+
+.image-background {
+  background: #555555;
+  display: table;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.containerPic {
+  position: relative;
+}
+
+
+.mat-card-image {
+margin: 0px;
+margin-left: 8.099%;
+margin-right: 10%;
+display: block;
+height: 490px;
+max-height: 500px;
+max-width: 85%;
+transition: .5s ease;
+backface-visibility: hidden;
+opacity: 1;
+}
+
+
+.mat-grid-tile {
+  overflow: unset;
+}

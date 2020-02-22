@@ -1,0 +1,31 @@
+<h2 mat-dialog-title> Update User Details </h2>
+<mat-form-field class="example-chip-list">
+        <mat-chip-list #chipListClasses>
+                <mat-chip
+                *ngFor = "let class of classes"
+                [selectable] = "selectable"
+                [removable] = "removable"
+                (removed) = "removeClass(class)">
+                {{ class }}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input 
+                placeholder="New Class..."
+                #classInput
+                [formControl]="classCtrl"
+                [matAutocomplete]="auto2"
+                [matChipInputFor]="chipListClasses"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="addClass($event)">
+                <mat-autocomplete #auto2="matAutocomplete" (optionSelected)="selectedClass($event)">
+                        <mat-option *ngFor="let class of filteredClasses" [value]="class">
+                        {{ class }}
+                        </mat-option>
+                </mat-autocomplete>
+        </mat-chip-list>
+</mat-form-field>
+<br>
+        <button mat-raised-button (click) = "update()">Update</button>
+<br>
+

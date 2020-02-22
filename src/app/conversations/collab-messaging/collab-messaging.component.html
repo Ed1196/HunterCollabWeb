@@ -1,0 +1,33 @@
+
+
+        <div class="noBg overflow">
+                        <ol   *ngFor="let message of  messages">
+                                
+                                        <div *ngIf="message.sender===user">
+                                                <li class="me">
+                                                        {{message.message}}<br>
+                                                        <span class="right"> {{message.dispName}}</span>
+                                                        </li>
+                                        </div>
+                                        <div *ngIf="message.sender!==user">
+                                                <li class="him">   
+                                                        {{message.message}}<br>
+                                                        <span class="left"> {{message.dispName}}</span>   
+                                                </li>
+                                        </div>
+                                </ol>
+        </div>
+                
+        
+
+<form #form = "ngForm" (ngSubmit) = "sendMessage()">
+        <div class="form-container">
+                <mat-form-field>
+                        <input [(ngModel)] = "messageInput" name = "message" id = "username" type = "text" class = "form-control"
+                        #username = "ngModel" matInput placeholder = "Message..." required>
+                </mat-form-field> 
+                <button mat-raised-button color = "primary" >Send</button>
+        </div>
+
+</form>
+        

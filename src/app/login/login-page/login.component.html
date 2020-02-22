@@ -1,0 +1,64 @@
+<div class = "medium-list">
+    <div class="list-viewer-wrapper">
+      <div class="list-header-title">Log-in</div>
+      
+      <form [formGroup] = "form" (ngSubmit) = "onSubmit()">
+  
+        <!-- Username Field -->
+        <div class="form-container">
+          <mat-form-field>
+  
+              <!-- Associate key from ts file: username -->
+              <input 
+                  formControlName = "username"
+                  matInput
+                  id="username" 
+                  type="email" 
+                  class="form-control"
+                  placeholder="Hunter Email...">
+          </mat-form-field>
+          <div *ngIf="username.touched && username.invalid" 
+                class="alert alert-danger">
+                <mat-error *ngIf="username.errors.required">Email is <strong>Required!</strong></mat-error>
+                <mat-error *ngIf="username.errors.email">Invalid <strong>Email!</strong></mat-error>
+          </div>
+        </div>
+        
+        <!-- Password Field -->
+        <div class="form-container">
+            <mat-form-field>
+    
+                <!-- Associate key from ts file: username -->
+                <input 
+                    formControlName = "password"
+                    matInput
+                    id="password" 
+                    type="text" 
+                    class="form-control-password"
+                    placeholder="Password..."
+                    [type] = "hide ? 'password' : 'text' "
+                    autocomplete="off">
+                <mat-icon matSuffix (click) = "hide = !hide">{{ hide ? 'visibility_of' : 'visibility' }}</mat-icon>
+            </mat-form-field>
+            <div *ngIf="password.touched && password.invalid" 
+                  class="alert alert-danger">
+                  <mat-error *ngIf="password.errors.required">Password <strong>Required!</strong></mat-error>
+                  <mat-error *ngIf="password.errors.minlength">Password must be of size {{ password.errors.minlength.requiredLength }}!</mat-error>
+            </div>
+        </div>
+  
+          <div class="form-container">
+              <button class="form-button" mat-raised-button color = "primary" type="submit" [disabled] = "!form.valid">Login</button>
+          </div>      
+  
+      </form>
+          <div class="form-container">
+              <button class="form-button"  mat-raised-button color = "primary" (click) = "register()">Register</button>
+          </div>
+          
+    </div>
+  </div>
+  
+  
+  
+  
