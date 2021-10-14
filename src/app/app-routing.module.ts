@@ -59,7 +59,7 @@ const routes: Routes = [
 @NgModule({
   //Lets angular know that this module is the root routing module.
   //It will configure all the routes passed to it, give access to router directives, and register the RouterService.
-  imports: [RouterModule.forRoot(routes, { useHash: true})],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
