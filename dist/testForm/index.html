@@ -3,30 +3,28 @@
 <head>
   <meta charset="utf-8">
   <title>Hunter Collaborate</title>
-  <base href="/">
-
+  <base href="https://Ed1196.github.io/HunterCollabWeb/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="assets/logo.png">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<link rel="stylesheet" href="styles.32b52de2e55466c0ad15.css"></head>
+<link rel="stylesheet" href="styles.f29e4df1c11788612292.css"></head>
 <body>
   <app-root></app-root>
-<<<<<<< HEAD
 
   <script>
-            var PingReceived = false;
+            var PingReceived = false; //Was new message received?
           
              function connect(authToken) {
                      console.log("Connecting to RMS Server.");
-                      var ws = new Websock();
-                      ws.on('open', function open() {
+                      var ws = new Websock(); //Create new websock
+                      ws.on('open', function open() { //On open, send the auth token
                               writeUTF(ws, authToken);
                       });
 
-                      ws.on('message', function() {
+                      ws.on('message', function() { //On receiving, get the message.
                               var b1 = ws.rQshift8();
                               var b2 = ws.rQshift8();
                               var b3 = ws.rQshift8();
@@ -37,15 +35,15 @@
                               msgArr.push(ws.rQshift8());
                               }
                               var res = utf8ArrayToString(msgArr);
-                              if (res === "AUTH_FAIL") {
+                              if (res === "AUTH_FAIL") { 
                                 console.log("Failed RMS Auth.");
-                              } else if (res === "PING") {
+                              } else if (res === "PING") { //If message is a ping, set PingReceived = true
                                 console.log("Ping received.");
                                 PingReceived = true;
                               }
                       });
 
-                      ws.open("ws://13.58.204.157:8989", "binary") 
+                      ws.open("ws://13.58.204.157:8989", "binary")  //Connect to realtime messaging server
                       
                       
                       //setTimeout(function(){ ws.close(); }, 10000);
@@ -812,8 +810,5 @@ if (Util.Engine.webkit) {
       })(Util.Engine.webkit);
 }
           </script>
-<script type="text/javascript" src="runtime.10910a2e004ab4ea0ea4.js"></script><script type="text/javascript" src="es2015-polyfills.d8ed92f29dbe469e0d93.js" nomodule></script><script type="text/javascript" src="polyfills.a5e8789e567e8daee27e.js"></script><script type="text/javascript" src="main.a642b610a6c3c0181c8e.js"></script></body>
-=======
-<script type="text/javascript" src="runtime.1381c8e70ab49a97d7c9.js"></script><script type="text/javascript" src="es2015-polyfills.91a64cf5a4e5b4cf57d3.js" nomodule></script><script type="text/javascript" src="polyfills.484b32a4ab61423059b7.js"></script><script type="text/javascript" src="main.092a133120f3d81846f6.js"></script></body>
->>>>>>> edwinBranch
+<script type="text/javascript" src="runtime.d9e7f52da6cc9f38dd65.js"></script><script type="text/javascript" src="es2015-polyfills.0320aa801a3998784b11.js" nomodule></script><script type="text/javascript" src="polyfills.5e43ec2babdf61925c54.js"></script><script type="text/javascript" src="main.843306f375130831966e.js"></script></body>
 </html>
