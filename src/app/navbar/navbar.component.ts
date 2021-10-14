@@ -22,6 +22,13 @@ export class NavbarComponent implements OnInit {
 
   }
 
+  isLoggedIn() {
+    if(localStorage.getItem('accessToken')){
+      return true;
+    }
+    return false;
+  }
+
   GoToHomePage(){
     this.router.navigate(['/home'])
   }
@@ -33,6 +40,7 @@ export class NavbarComponent implements OnInit {
 
   logOut(){
     localStorage.removeItem('accessToken');
+    localStorage.removeItem("refreshToken");
     this.router.navigate(['/login']);
   } 
 

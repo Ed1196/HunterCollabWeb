@@ -38,7 +38,7 @@ import { EditCollabComponent } from './edit-collab/edit-collab.component';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    //Angular Material
+    // Angular Material
     MatTabsModule,
     MatCardModule,
     MatIconModule,
@@ -59,9 +59,9 @@ import { EditCollabComponent } from './edit-collab/edit-collab.component';
     MatSelectModule,
 
     //Clock
-    OwlDateTimeModule, 
+    OwlDateTimeModule,
     OwlNativeDateTimeModule,
-    
+
     //Forms
     FormsModule,
     ReactiveFormsModule

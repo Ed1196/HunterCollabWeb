@@ -53,7 +53,7 @@
 
             <ng-container class="table-container">
               <div class="table">
-                <collab-table [table] = "table" [xAxisReq] = "xAxisReq"></collab-table>
+                <collab-table [userData]= "userData" [table] = "table" [xAxisReq] = "xAxisReq"></collab-table>
               </div>
             </ng-container>
           
@@ -74,7 +74,7 @@
           </mat-panel-description>
           </mat-expansion-panel-header>
             <mat-card-actions>
-              <button *ngIf="checkPartOf() == false" mat-raised-button color = "primary" (click) = "joinCollab()"  > Join </button>
+              <button *ngIf="checkPartOf() == false && checkOwner() != true" mat-raised-button color = "primary" (click) = "joinCollab()"  > Join </button>
               <button *ngIf="checkPartOf() == true"  mat-raised-button color = "primary" (click) = "leaveCollab()" > Leave </button>
               <button *ngIf="checkOwner() == true"   mat-raised-button color = "primary" (click) = "deleteCollab()"> Delete </button>
               <button *ngIf="checkOwner() == true"   mat-raised-button color = "primary" (click) = "editCollab()">    Edit</button>

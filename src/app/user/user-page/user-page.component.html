@@ -13,10 +13,10 @@
                 <mat-card-header class="list-header-title">
 
                  
-                      <mat-card-title>{{ userData?.name }}</mat-card-title>
-                      <mat-card-subtitle>{{ userData?.username }}</mat-card-subtitle>
+                      <mat-card-title>{{ userData?.username }}</mat-card-title>
+                      <mat-card-subtitle>{{ userData?.email }}</mat-card-subtitle>
                       <button mat-flat-button color="primary" (click) = "openDialog1()" *ngIf="canEdit">Edit</button>
-                      <button mat-flat-button color="primary" (click) = "messageUser()" *ngIf="canMessage">Message</button>
+                      <!--<button mat-flat-button color="primary" (click) = "messageUser()" *ngIf="canMessage" >Message</button>-->
                 </mat-card-header>  
 
               
@@ -28,7 +28,7 @@
                            class="image">
                       </div> 
 
-                      <div class="middle"  *ngIf="canEdit">
+                      <div class="middle"  *ngIf="false">
                         <button mat-raised-button class="text" (click) = "openDialog4()">Change Picture</button>
                       </div>
                     </div>  
@@ -39,11 +39,11 @@
                 
                 <mat-grid-list cols="2" rowHeight="4:1" class="user-links">
                     <mat-grid-tile>
-                          <button mat-raised-button color="warm" (click) = "onNavigateGithub()" >{{ userData?.github }}</button>
+                          <button mat-raised-button color="warm" (click) = "onNavigateGithub()" >{{ github }}</button>
                     </mat-grid-tile>
                     
                     <mat-grid-tile>
-                        <button mat-raised-button color="primary" (click) = "onNavigateLinkedIn()">{{ userData?.linkedin }}</button>
+                        <button mat-raised-button color="primary" (click) = "onNavigateLinkedIn()">{{ linkedIn }}</button>
                     </mat-grid-tile>
                 </mat-grid-list>
 

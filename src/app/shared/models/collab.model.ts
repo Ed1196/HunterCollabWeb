@@ -1,5 +1,6 @@
 export class CollabModel {
     public _id          ?: {};
+    public id           ?: {};
     public owner        ?: string;
     public size         ?: number;
     public date         ?: number;

@@ -94,15 +94,25 @@ export class CreateCollabComponent implements OnInit {
       startWith(null),
       debounceTime(200),
       distinctUntilChanged(),
-      switchMap( (query: string) => this.userService.searchSkills(query)  )
-      ).subscribe( (skills: Observable<string[]>) => this.filteredSkills = skills["matches"] );
+      switchMap((query: string) => {
+        if (query === null || query === "") {
+          this.filteredSkills = null;
+          return [];
+        }
+        return this.userService.searchSkills(query)})
+      ).subscribe( (skills: Observable<string[]>) => this.filteredSkills = skills["skills"] );
 
       this.classCtrl.valueChanges.pipe(
       startWith(null),
       debounceTime(200),
       distinctUntilChanged(),
-      switchMap( (query: string) => this.userService.searchClasses(query)  )
-      ).subscribe( (classes: Observable<string[]>) => this.filteredClasses = classes["matches"] );
+      switchMap((query: string) => {
+        if (query === null || query === "") {
+          this.filteredSkills = null;
+          return [];
+        }
+        return this.userService.searchClasses(query)})
+      ).subscribe( (classes: Observable<string[]>) => this.filteredClasses = classes["classes"] );
 
 
       
@@ -257,7 +267,6 @@ export class CreateCollabComponent implements OnInit {
     this.collabData.date = (this.collabData.date).valueOf();
     this.collabData.duration *= 86400000;
     this.collabData.duration += this.collabData.date;
-    let createResult: boolean;
     this.collabService.createCollab(this.collabData)
       .subscribe(result => { 
         if(result['success']){

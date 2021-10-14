@@ -18,11 +18,11 @@
             </mat-form-field>
             <br>
             <mat-form-field>
-                <input [(ngModel)] = "data.userData['linkedin']" name = "linkedin" id = "linkedin" type = "text" class = "form-control"
-                    #linkedin = "ngModel" matInput placeholder = "LinkedIn..." required>
+                <input [(ngModel)] = "data.userData['linkedIn']" name = "linkedIn" id = "linkedIn" type = "text" class = "form-control"
+                    #linkedIn = "ngModel" matInput placeholder = "LinkedIn..." required>
             </mat-form-field>
             <br>
-            <button mat-raised-button>Update</button>
+            <button mat-raised-button [disabled]="!form.form.valid">Update</button>
             <br>
         </form>
       </div>

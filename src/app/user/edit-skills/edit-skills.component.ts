@@ -85,8 +85,15 @@ export class EditSkillsComponent implements OnInit {
       startWith(null),
       debounceTime(200),
       distinctUntilChanged(),
-      switchMap( (query: string) => this.userService.searchSkills(query)  )
-      ).subscribe( (skills: Observable<string[]>) => this.filteredSkills = skills["matches"] );
+      switchMap( (query: string) => { 
+        if(query === null || query === "") {
+          this.filteredSkills = null;
+          return [];
+        }
+        return this.userService.searchSkills(query)})
+      ).subscribe( (skills: Observable<string[]>) => {
+        this.filteredSkills = skills["skills"];
+       });
   }
 
   /**

@@ -1,8 +1,9 @@
 export interface UserModel {
     username ?: string,
+    email ?: string,
     password ?: string;
     github ?: string ;
-    linkedin ?: string;
+    linkedIn ?: string;
     skills ?: string  [];
     classes ?: string [];
     name ?: string;

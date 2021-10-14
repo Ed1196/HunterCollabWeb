@@ -97,21 +97,31 @@ export class EditCollabComponent implements OnInit {
   */ 
   async ngOnInit() {
     await this.getCollabDetails(this._id);
-    
     this.skillCtrl.valueChanges.pipe(
       
       startWith(null),
       debounceTime(200),
       distinctUntilChanged(),
-      switchMap( (query: string) => this.userService.searchSkills(query)  )
-      ).subscribe( (skills: Observable<string[]>) => this.filteredSkills = skills["matches"] );
+      switchMap( (query: string) => { 
+        if (query === null || query === "") {
+          this.filteredSkills = null;
+          return [];
+        }
+        return this.userService.searchSkills(query) }  )
+      ).subscribe( (skills: Observable<string[]>) => { 
+        this.filteredSkills = skills["skills"] });
 
     this.classCtrl.valueChanges.pipe(
       startWith(null),
       debounceTime(200),
       distinctUntilChanged(),
-      switchMap( (query: string) => this.userService.searchClasses(query)  )
-      ).subscribe( (classes: Observable<string[]>) => this.filteredClasses = classes["matches"] );
+      switchMap( (query: string) => { 
+        if (query === null || query === "") {
+          this.filteredClasses = null;
+          return [];
+        }
+        return this.userService.searchClasses(query) }  )
+      ).subscribe( (classes: Observable<string[]>) => this.filteredClasses = classes["classes"] );
     
   }
 
@@ -129,9 +139,9 @@ export class EditCollabComponent implements OnInit {
   */
   getCollabDetails(id: string){
     this.collabService.getSingleCollab(id).subscribe(res => {
-      this.collabData = res['0'];
-      this.skills = res['0']['skills'];
-      this.classes = res['0']['classes'];
+      this.collabData = res['collab'];
+      this.skills = res['collab'].skills;
+      this.classes = res['collab'].classes;
     });
   }
 
@@ -147,7 +157,6 @@ export class EditCollabComponent implements OnInit {
   *	@return nothing
   */
   async update(collabUpdatedData){
-    
     this.collabData = collabUpdatedData;
     this.collabData.skills = this.skills;
     this.collabData.classes = this.classes;
@@ -164,6 +173,12 @@ export class EditCollabComponent implements OnInit {
     
   }
 
+  parseDate(dateString: string): Date {
+    if (dateString) {
+        return new Date(dateString);
+    }
+  }
+
   /**
   * @author Edwin Quintuna
   * 
@@ -178,6 +193,7 @@ export class EditCollabComponent implements OnInit {
 
       const input = event.input;
       const value = event.value;
+      
 
       if((value || '').trim()) {
         this.skills.push(value.trim());

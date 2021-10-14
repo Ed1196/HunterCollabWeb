@@ -6,51 +6,55 @@ import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ConversationService {
+  readonly rootUrl = "https://hunter-collab-services.herokuapp.com";
+  constructor(private http: HttpClient) {}
 
-  readonly rootUrl = 'http://13.58.204.157:5000';
-  constructor(private http: HttpClient) { }
-  
   //send group message to collab group
-  sendMessageToCollabGroup(message , collabID){
-    const body : Message ={
-      message   : message,
-      collabId  : collabID
-    }
-    return this.http.post(this.rootUrl+"/messaging/sendMessage",body)
+  sendMessageToCollabGroup(message, collabID) {
+    const body: Message = {
+      message: message,
+      collabId: collabID,
+    };
+    return this.http.post(this.rootUrl + "/messaging/sendMessage", body);
   }
 
   //send personal message to collab members
-  sendPersonalMessage( message , recipient){
-    const body : Message ={
-      message   : message,
-      recipient : recipient
-    }
-    console.log(message+" "+ recipient)
-    return this.http.post(this.rootUrl+"/messaging/sendMessage",body)
-
+  sendPersonalMessage(message, recipient) {
+    const body: Message = {
+      message: message,
+      recipient: recipient,
+    };
+    console.log(message + " " + recipient);
+    return this.http.post(this.rootUrl + "/messaging/sendMessage", body);
   }
 
   //return current user conversations
-  myCoversations(){ 
-    return this.http.get( this.rootUrl +"/messaging/myConvos");
+  myCoversations() {
+    return this.http.get(this.rootUrl + "/messaging/myConvos");
   }
 
   getMessages(ident, collab: boolean): Observable<Message[]> {
     if (collab) {
-      const body={
-        page      : 0,
-        collabId : ident
-      }
-      return this.http.post<Message[]>(this.rootUrl+"/messaging/getMessages",body)
+      const body = {
+        page: 0,
+        collabId: ident,
+      };
+      return this.http.post<Message[]>(
+        this.rootUrl + "/messaging/getMessages",
+        body
+      );
     } else {
-      const body={
-        page      : 0,
-        otherUser : ident
-      }
-      return this.http.post<Message[]>(this.rootUrl+"/messaging/getMessages",body)
+      const body = {
+        page: 0,
+        otherUser: ident,
+      };
+      return this.http.post<Message[]>(
+        this.rootUrl + "/messaging/getMessages",
+        body
+      );
     }
   }
 
@@ -63,22 +67,19 @@ export class ConversationService {
 
     otherUser should be the other user’s username 
    */
-  LoadOtherUserMessage(page:number, otherUser:string){
-    const body={
-      page      : page,
-      otherUser : otherUser
-    }
-    return this.http.post(this.rootUrl+"/messaging/getMessages",body)
-  }
-  
-  LoadGroupMessage(page:number, CollabId:string){
-    const body={
-      page      : page,
-      collabId  : CollabId
-    }
-    return this.http.post(this.rootUrl+"/messaging/getMessages",body)
+  LoadOtherUserMessage(page: number, otherUser: string) {
+    const body = {
+      page: page,
+      otherUser: otherUser,
+    };
+    return this.http.post(this.rootUrl + "/messaging/getMessages", body);
   }
 
-
-
+  LoadGroupMessage(page: number, CollabId: string) {
+    const body = {
+      page: page,
+      collabId: CollabId,
+    };
+    return this.http.post(this.rootUrl + "/messaging/getMessages", body);
+  }
 }

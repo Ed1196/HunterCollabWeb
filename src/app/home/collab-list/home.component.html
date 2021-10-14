@@ -7,10 +7,10 @@
 
       <mat-tab label="Recommended">
         <ng-template matTabContent>
-          <ng-container *ngFor = "let collab of collabData | async">
+          <ng-container *ngFor = "let collab of collabData">
             <div class ="collab">
                 <!-- Property binding from component to component using @Input() and @Output -->
-                <collab-card [collabData] = "collab"></collab-card>
+                <collab-card [collabData] = "collab" [userData] = "userData"></collab-card>
             </div>      
           </ng-container>
         </ng-template>
@@ -18,10 +18,10 @@
 
       <mat-tab label="All Collaborations">
         <ng-template matTabContent>
-          <ng-container *ngFor = "let collab of collabData | async">
+          <ng-container *ngFor = "let collab of collabData">
             <div class ="collab">
                 <!-- Property binding from component to component using @Input() and @Output -->
-                <collab-card [collabData] = "collab"></collab-card>
+                <collab-card [collabData] = "collab" [userData] = "userData"></collab-card>
             </div>      
           </ng-container>
         </ng-template>
@@ -29,10 +29,10 @@
 
       <mat-tab label="My Collabs">
         <ng-template matTabContent>
-            <ng-container *ngFor = "let collab of collabData | async">
+            <ng-container *ngFor = "let collab of collabData">
               <div class ="collab">
                 <!-- Property binding from component to component using @Input() and @Output -->
-                <collab-card [collabData] = "collab"></collab-card>
+                <collab-card [collabData] = "collab" [userData] = "userData"></collab-card>
               </div>      
             </ng-container>
         </ng-template>

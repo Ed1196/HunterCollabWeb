@@ -90,15 +90,15 @@ export class LoginComponent implements OnInit {
 
     this.userService.userAuthentication(this.user.username,this.user.password)
     .subscribe((data : any)=>{
-      
       if(data.success){
         //storing json object to localStorage
-        localStorage.setItem('accessToken', data.token);
+        localStorage.setItem('accessToken', data.accessToken);
+        localStorage.setItem("refreshToken", data.refreshToken);
         this.router.navigate(['/home']);
         //console.log ( this.user.username + "  logged-in"); 
       }
       else{ 
-         alert(data.error);
+        
          this.router.navigate(['/login']);
     }; 
       return;

@@ -76,8 +76,14 @@ export class EditClassesComponent implements OnInit {
       startWith(null),
       debounceTime(200),
       distinctUntilChanged(),
-      switchMap( (query: string) => this.userService.searchClasses(query)  )
-      ).subscribe( (classes: Observable<string[]>) => this.filteredClasses = classes["matches"] );
+      switchMap( (query: string) => {
+        if (query === null || query === "") {
+          this.filteredClasses = null;
+          return [];
+        }
+        return this.userService.searchClasses(query)
+      })
+      ).subscribe( (classes: Observable<string[]>) => this.filteredClasses = classes["classes"] );
   }
 
   /**
@@ -154,7 +160,7 @@ export class EditClassesComponent implements OnInit {
   *	@return nothing
   */
   update(){
-    this.userService.updateUserclass(this.classes).subscribe(result => {});
+    this.userService.updateUserClasses(this.classes).subscribe(result => {});
     this.dialogRef.close();
   }
 

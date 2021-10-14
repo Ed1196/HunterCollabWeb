@@ -7,10 +7,10 @@
               <!-- 
                 drawer.toggle(): will call #drawer and will bring the sidenav into view
               -->
-              <button mat-icon-button (click) = "drawer.toggle()">
+              <button *ngIf="isLoggedIn()" mat-icon-button (click) = "drawer.toggle()">
                       <mat-icon>menu</mat-icon>
               </button>
-              <button mat-button routerLink="/home">Hunter Collab</button>
+              <button mat-button routerLink="/home" [disabled]="!isLoggedIn()">Hunter Collab</button>
        
               <span class="spacer"></span>
               
@@ -23,23 +23,23 @@
       <router-outlet></router-outlet>
   </div>
   
-  <mat-drawer #drawer class="sidenav">
-          <button mat-menu-item routerLink="/home">
+  <mat-drawer   #drawer class="sidenav">
+          <button mat-menu-item routerLink="/home" (click)="drawer.toggle()">
             <mat-icon>home</mat-icon>
             <span>Home</span>
           </button> 
 
-          <button mat-menu-item routerLink="/user">
+          <button mat-menu-item routerLink="/user" (click)="drawer.toggle()">
             <mat-icon>person</mat-icon>
             <span>Profile</span>
           </button> 
-
-          <button mat-menu-item routerLink="/conversations">
+        <!--
+          <button mat-menu-item routerLink="/conversations" (click)="drawer.toggle()">
             <mat-icon >send</mat-icon>
             <span>Messenger</span>
           </button> 
-
-          <button mat-menu-item (click)="logOut()">
+        -->
+          <button mat-menu-item (click)="logOut()" (click)="drawer.toggle()">
             <mat-icon>logout</mat-icon>
             <span>Logout</span>
           </button>          
